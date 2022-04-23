@@ -45,7 +45,7 @@ issues).
 
 ### Usage
 
-```bash
+```
 $ git clone https://github.com/viniciusgugelmin/iam-ng-up
 
 $ cd iam-ng-up
