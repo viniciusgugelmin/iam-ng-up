@@ -7,5 +7,5 @@ import { environment } from '../environments/environment';
 })
 export class AppComponent {
   title = environment.env.APP_NAME;
-  pageSubttitle = '';
+  pageSubtitle = '';
 }
