@@ -1,4 +1,4 @@
-import IPermission from "./IPermission";
+import IPermission from './IPermission';
 
 export default interface IRole {
   name: string;

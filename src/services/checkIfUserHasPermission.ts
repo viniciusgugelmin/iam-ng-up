@@ -15,13 +15,14 @@ export const checkIfHasPermission = (
         permission.name === permissionName &&
         permission[permissionValue]
     )
-  )
+  ) {
     return true;
+  }
 
   if (dispatch) {
     dispatchAlert({
       type: 'error',
-      message: "You don't have permission",
+      message: 'You dont have permission',
     });
   }
 

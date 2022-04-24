@@ -1,36 +1,36 @@
-import Permission from "../../back/models/Permission";
+import Permission from '../../models/Permission';
 
 const permissions = [
   new Permission({
-    name: "admin_users",
+    name: 'admin_users',
     create: true,
     read: true,
     update: true,
     delete: true,
   }),
   new Permission({
-    name: "users",
+    name: 'users',
     create: true,
     read: true,
     update: true,
     delete: true,
   }),
   new Permission({
-    name: "customers",
+    name: 'customers',
     create: true,
     read: true,
     update: true,
     delete: true,
   }),
   new Permission({
-    name: "products",
+    name: 'products',
     create: true,
     read: true,
     update: true,
     delete: true,
   }),
   new Permission({
-    name: "roles",
+    name: 'roles',
     create: true,
     read: true,
     update: true,

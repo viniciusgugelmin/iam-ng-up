@@ -1,8 +1,8 @@
-import Role from "../../back/models/Role";
+import Role from '../../models/Role';
 
 const commonRole = new Role({
-  name: "common",
-  description: "Common",
+  name: 'common',
+  description: 'Common',
   permissions: [],
   deletedAt: null,
 });

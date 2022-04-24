@@ -9,7 +9,7 @@ export const dispatchConfirmBox = ({
   onConfirm: any;
   onCancel?: any;
 }) => {
-  const event = new CustomEvent("up-confirm-box", {
+  const event = new CustomEvent('up-confirm-box', {
     detail: { title, message, onConfirm, onCancel },
   });
 
