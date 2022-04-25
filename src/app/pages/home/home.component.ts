@@ -12,10 +12,8 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   user = {} as User;
   token = '';
-
-  page = '';
   isPageChanged = false;
-  isPageUnmounting = false;
+  pageLoaded = false;
   entryPageClassName = '';
   sectionPageClassName = '';
 
@@ -48,17 +46,27 @@ export class HomeComponent implements OnInit {
           this.router.navigate([route]);
           return;
         }
+
+        this.changePage(this.router.url.replace('/', ''), true);
       }
     );
   }
 
-  loadPage(): void {
-    let routeUrl = '/';
-
-    if (this.page) {
-      routeUrl = `/${this.page}`;
+  changePage(newPage: string, initPage: boolean = false): void {
+    if (!initPage) {
+      this.sectionPageClassName = 'up-home-section-page--disabled';
     }
 
-    this.router.navigate([routeUrl]);
+    this.entryPageClassName = newPage ? 'up-home-entry-page--disabled' : '';
+
+    setTimeout(() => {
+      this.isPageChanged = !!newPage;
+      this.pageLoaded = true;
+
+      if (!initPage) {
+        this.router.navigate([newPage]);
+        this.sectionPageClassName = '';
+      }
+    }, 500);
   }
 }

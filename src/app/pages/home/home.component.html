@@ -1,31 +1,32 @@
 <div [ngClass]="['up-home-entry-page', entryPageClassName]">
-  <div *ngIf="!isPageChanged">
-    <div [ngClass]="'up-home-entry-page__container'">
-      <h1 [ngClass]="'up-home-entry-page__title'">Go Drink</h1>
-      <div [ngClass]="'up-home-entry-page__button-container'">
-        <Button
-          [ngClass]="'up-home-entry-page__button-login'"
-          (click)="setPage('login')">
-          Log in
-        </Button>
-        <Button
-          [ngClass]="'up-home-entry-page__button-login'"
-          (click)="setPage('signup')"
-        >
-          Sign up
-        </Button>
-      </div>
+  <div *ngIf="!isPageChanged && pageLoaded" [ngClass]="'up-home-entry-page__container'">
+    <h1 class="up-home-entry-page__title">Go Drink</h1>
+    <div class="up-home-entry-page__button-container">
+      <button
+        [ngClass]="'up-button up-home-entry-page__button-login'"
+        type="button"
+        (click)="changePage('login')"
+      >
+        Login
+      </button>
+      <button
+        class="up-button up-home-entry-page__button-login"
+        type="button"
+        (click)="changePage('register')"
+      >
+        Sign up
+      </button>
     </div>
   </div>
-  <div *ngIf="isPageChanged">
-    <div [ngClass]="['up-home-section-page', sectionPageClassName]">
-      <Button
-        [ngClass]="'up-home-section-page__button-back'"
-        (click)="changePage('')"
-      >
-        <GoBackIcon/>
-      </Button>
-      <div [ngClass]="'up-home-section-page__container'"><!--{children}--></div>
+  <div *ngIf="isPageChanged" [ngClass]="['up-home-section-page', sectionPageClassName]">
+    <button
+      class="up-button up-home-section-page__button-back"
+      (click)="changePage('')"
+    >
+      <img height="42px" src="../public/images/go-back-icon.svg" alt="Go back">
+    </button>
+    <div class="up-home-section-page__container">
+      <router-outlet></router-outlet>
     </div>
   </div>
 </div>
