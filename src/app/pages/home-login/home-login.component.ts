@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { login } from '../../../stores/app.state';
+import { AppState, login } from '../../../stores/app.state';
+import { Store } from '@ngrx/store';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home-login',
@@ -32,6 +34,10 @@ export class HomeLoginComponent implements OnInit {
     return this._password;
   }
 
+  constructor(private store: Store<AppState>, private router: Router) {}
+
+  ngOnInit(): void {}
+
   async login() {
     if ((!this.email || !this.password) && !this.loading) {
       return;
@@ -44,12 +50,19 @@ export class HomeLoginComponent implements OnInit {
         email: this.email,
         password: this.password,
       });
+
+      this.store.dispatch({
+        type: 'SET_USER',
+        payload: loginResponse.user,
+      });
+      this.store.dispatch({
+        type: 'SET_TOKEN',
+        payload: loginResponse.token,
+      });
+
+      this.router.navigate([loginResponse.route]);
     } catch (error) {
       this.loading = false;
     }
   }
-
-  constructor() {}
-
-  ngOnInit(): void {}
 }

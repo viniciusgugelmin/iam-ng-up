@@ -6,7 +6,7 @@ const useAuthentication = async (
   token: string,
   needsPushToHome = true
 ) => {
-  let route = null;
+  let route = '/';
 
   if (user && token) {
     return { user, token, route };
