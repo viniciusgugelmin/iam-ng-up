@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import User from '../../models/User';
+import User from '../../../models/User';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../stores/app.state';
+import { AppState } from '../../../stores/app.state';
 import useAuthentication from 'src/hooks/UseAuthentication';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,12 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   user = {} as User;
   token = '';
+
+  page = '';
+  isPageChanged = false;
+  isPageUnmounting = false;
+  entryPageClassName = '';
+  sectionPageClassName = '';
 
   constructor(private store: Store<AppState>, private router: Router) {}
 
@@ -44,5 +50,15 @@ export class HomeComponent implements OnInit {
         }
       }
     );
+  }
+
+  loadPage(): void {
+    let routeUrl = '/';
+
+    if (this.page) {
+      routeUrl = `/${this.page}`;
+    }
+
+    this.router.navigate([routeUrl]);
   }
 }
