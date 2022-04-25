@@ -38,6 +38,9 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "allowedCommonJsDependencies": [
+              "axios"
+            ],
             "outputPath": "dist/iam-ng-up",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -46,7 +49,7 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/public"
             ],
             "styles": [
               "src/styles.css"
@@ -110,7 +113,7 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/public"
             ],
             "styles": [
               "src/styles.css"
@@ -144,6 +147,7 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "iam-ng-up"
 }

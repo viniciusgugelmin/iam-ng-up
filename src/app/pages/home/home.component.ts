@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import User from '../../models/User';
+import User from '../../../models/User';
 import { Store } from '@ngrx/store';
-import { AppState } from '../../stores/app.state';
+import { AppState } from '../../../stores/app.state';
 import useAuthentication from 'src/hooks/UseAuthentication';
 import { Router } from '@angular/router';
 
@@ -12,6 +12,10 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   user = {} as User;
   token = '';
+  isPageChanged = false;
+  pageLoaded = false;
+  entryPageClassName = '';
+  sectionPageClassName = '';
 
   constructor(private store: Store<AppState>, private router: Router) {}
 
@@ -42,7 +46,27 @@ export class HomeComponent implements OnInit {
           this.router.navigate([route]);
           return;
         }
+
+        this.changePage(this.router.url.replace('/', ''), true);
       }
     );
+  }
+
+  changePage(newPage: string, initPage: boolean = false): void {
+    if (!initPage) {
+      this.sectionPageClassName = 'up-home-section-page--disabled';
+    }
+
+    this.entryPageClassName = newPage ? 'up-home-entry-page--disabled' : '';
+
+    setTimeout(() => {
+      this.isPageChanged = !!newPage;
+      this.pageLoaded = true;
+
+      if (!initPage) {
+        this.router.navigate([newPage]);
+        this.sectionPageClassName = '';
+      }
+    }, 500);
   }
 }

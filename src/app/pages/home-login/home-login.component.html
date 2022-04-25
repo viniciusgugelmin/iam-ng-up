@@ -1,0 +1,44 @@
+<form class="up-form up-form  up-form--purple" (ngSubmit)="login()">
+  <h2 class="up-form__title">Login</h2>
+  <div class="up-input">
+    <div
+      [className]="'up-input__container up-input__container--purple ' + (isEmailFocused || email ? ' up-input__container--active' : '')">
+      <label
+        [className]="'up-input__label up-input__label--purple ' + (isEmailFocused || email ? ' up-input__label--active' : '')">
+        Email
+      </label>
+      <input
+        id="email"
+        class="up-input__el"
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        required
+        (focus)="isEmailFocused = true"
+        (blur)="isEmailFocused = false"
+      >
+    </div>
+  </div>
+  <div class="up-input">
+    <div
+      [className]="'up-input__container up-input__container--purple ' + (isPasswordFocused ||password ? ' up-input__container--active' : '')">
+      <label
+        [className]="'up-input__label up-input__label--purple ' + (isPasswordFocused || password ? ' up-input__label--active' : '')">
+        Password
+      </label>
+      <input
+        id="password"
+        class="up-input__el"
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        required
+        (focus)="isPasswordFocused = true"
+        (blur)="isPasswordFocused = false"
+      >
+    </div>
+  </div>
+  <button class="up-button up-button--purple" type="submit" [disabled]="disabled">
+    {{loading ? "Loading..." : "Submit"}}
+  </button>
+</form>

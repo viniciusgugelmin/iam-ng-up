@@ -65,7 +65,7 @@ html, body {
   border: 2px solid #020847;
   position: relative;
   cursor: pointer;
-  transition: all .4s ease-in-out
+  transition: all .4s ease-in-out;
 }
 
 .up-button--blue {
