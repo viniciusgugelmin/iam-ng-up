@@ -52,7 +52,7 @@ $ cd iam-ng-up
 
 $ yarn install
 
-$ yarn run start
+$ yarn run dev
 ```
 
 Create a `env.ts` file with the following content:
@@ -63,6 +63,9 @@ export const env = {
   API_URL: 'http://localhost:3000/api',
 };
 ```
+
+This project is using the [https://github.com/viniciusgugelmin/iam-up](https://github.com/viniciusgugelmin/iam-up)
+project back end.
 
 ## Contributing
 

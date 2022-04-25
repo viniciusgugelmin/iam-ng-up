@@ -10,6 +10,8 @@ import { HomeLoginComponent } from './pages/home-login/home-login.component';
 import { HomeRegisterComponent } from './pages/home-register/home-register.component';
 import { FormsModule } from '@angular/forms';
 import { HomeLoggedComponent } from './pages/home-logged/home-logged.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -18,12 +20,14 @@ import { HomeLoggedComponent } from './pages/home-logged/home-logged.component';
     HomeLoginComponent,
     HomeRegisterComponent,
     HomeLoggedComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers),
     FormsModule,
+    CommonModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

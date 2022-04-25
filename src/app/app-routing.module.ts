@@ -18,6 +18,10 @@ const routes: Routes = [
     path: 'home',
     component: HomeLoggedComponent,
   },
+  {
+    path: '**',
+    redirectTo: 'home',
+  },
 ];
 
 @NgModule({

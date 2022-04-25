@@ -13,7 +13,10 @@ export class HomeLoggedComponent implements OnInit {
   user = {} as User;
   token = '';
 
-  constructor(private store: Store<AppState>, private router: Router) {}
+  pageLoaded = false;
+
+  constructor(private store: Store<AppState>, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.store.select('user').subscribe((user) => {
@@ -42,6 +45,8 @@ export class HomeLoggedComponent implements OnInit {
           this.router.navigate([route]);
           return;
         }
+
+        this.pageLoaded = true;
       }
     );
   }

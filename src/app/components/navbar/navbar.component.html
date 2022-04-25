@@ -1,0 +1,22 @@
+<aside class="up-navbar">
+  <h1 class="up-navbar__title">Go Drink</h1>
+  <ng-container *ngFor="let item of navbarOptions; index as i">
+    <h2
+      [className]="'up-navbar__option' +
+    (item.isActive ? ' up-navbar__option--active' : '') +
+    (item.options.length === 0 ? ' up-navbar__option--has-sub-options' : '')"
+      (click)="handleOptionClick(i)"
+    >
+      {{ item.name }}
+    </h2>
+
+    <ul
+      [className]="'up-navbar__sub-options' + (item.isActive ? ' up-navbar__sub-options--active' : ' up-navbar__sub-options--hidden')">
+      <li *ngFor="let option of item.options; index as iOption"
+          (click)="handleSubOptionClick(i, iOption)"
+          [className]="'up-navbar__sub-option' + (option.isActive ? ' up-navbar__sub-option--active' : '') + (option.blocked ? ' up-navbar__sub-option--blocked' : '')">
+        {{ option.name }}
+      </li>
+    </ul>
+  </ng-container>
+</aside>
