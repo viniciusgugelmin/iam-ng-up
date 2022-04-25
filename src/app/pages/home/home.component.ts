@@ -12,6 +12,7 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   user = {} as User;
   token = '';
+
   isPageChanged = false;
   pageLoaded = false;
   entryPageClassName = '';
@@ -42,7 +43,7 @@ export class HomeComponent implements OnInit {
           payload: token,
         });
 
-        if (route) {
+        if (user) {
           this.router.navigate([route]);
           return;
         }
@@ -61,7 +62,9 @@ export class HomeComponent implements OnInit {
 
     setTimeout(() => {
       this.isPageChanged = !!newPage;
-      this.pageLoaded = true;
+      setTimeout(() => {
+        this.pageLoaded = true;
+      }, 100);
 
       if (!initPage) {
         this.router.navigate([newPage]);

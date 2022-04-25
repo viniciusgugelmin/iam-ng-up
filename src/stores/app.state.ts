@@ -68,7 +68,7 @@ export const getUser = async ({ token }: IUserAuth) => {
   return {
     user,
     token,
-    route: null,
+    route: '/home',
   };
 };
 
