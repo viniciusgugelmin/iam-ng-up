@@ -1,0 +1,30 @@
+<div class="up-table">
+  <h2>{{title}}</h2>
+  <table *ngIf="!isLoading">
+    <thead>
+    <tr>
+      <th *ngFor="let header of headers">{{prepareHeader(header)}}</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let row of data; index as i">
+      <ng-container *ngFor="let cell of row; index as iCell">
+        <td
+          *ngIf="returnCellTypeof(cell) === 'function'"
+          [className]="'up-table__button' + (checkIfUserIsBlockedToChange(headers[iCell]) ? ' up-table__button--disabled' : '')"
+          (click)="cell()"
+        >
+          <img *ngIf="headers[iCell] === 'Delete'" src="../../../../../public/images/trash-solid.svg" alt="Trash">
+          <img *ngIf="headers[iCell] === 'Update'" src="../../../../../public/images/pen-solid.svg" alt="Pen">
+        </td>
+        <td
+          *ngIf="returnCellTypeof(cell) !== 'function'"
+          (click)="copyToClipboard(cell)"
+        >
+          {{cell}}
+        </td>
+      </ng-container>
+    </tr>
+    </tbody>
+  </table>
+</div>

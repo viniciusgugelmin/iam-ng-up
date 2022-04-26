@@ -1,0 +1,14 @@
+<section class="up-alerts-box">
+  <div
+    *ngFor="let alert of alerts"
+    [className]="'up-alerts-box__alert' + ' up-alerts-box__alert--' + alert.type"
+  >
+    <span class="up-alerts-box__alert-text">{{alert.message}}</span>
+    <span
+      class="up-alerts-box__alert-close"
+      (click)="removeAlert(alert.id)"
+    >
+    x
+    </span>
+  </div>
+</section>

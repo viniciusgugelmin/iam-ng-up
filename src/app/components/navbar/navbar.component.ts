@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AppState, logout } from '../../../stores/app.state';
 import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { checkIfHasPermission } from '../../../services/checkIfUserHasPermission';
 import User from '../../../models/User';
 import useAuthentication from '../../../hooks/UseAuthentication';
@@ -16,7 +16,8 @@ export class NavbarComponent implements OnInit {
 
   navbarOptions = [];
 
-  constructor(private store: Store<AppState>, private router: Router) {}
+  constructor(private store: Store<AppState>, private router: Router) {
+  }
 
   ngOnInit(): void {
     this.store.select('user').subscribe((user) => {
@@ -27,7 +28,7 @@ export class NavbarComponent implements OnInit {
       this.token = token;
     });
 
-    this.navbarOptions = [
+    const returnNavbarOptions = () => [
       {
         name: 'Users',
         isActive: this.checkIfOptionInitActive('users'),
@@ -65,6 +66,14 @@ export class NavbarComponent implements OnInit {
         options: [],
       },
     ];
+
+    this.navbarOptions = returnNavbarOptions();
+
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.navbarOptions = returnNavbarOptions();
+      }
+    });
   }
 
   checkIfOptionInitActive(option: string) {

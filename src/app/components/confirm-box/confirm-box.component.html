@@ -1,0 +1,24 @@
+<ng-container *ngIf="show">
+  <div class="up-modal">
+    <h1>{{title}}</h1>
+    <p>{{message}}</p>
+    <div class="up-modal__buttons">
+      <button
+        class="up-button up-modal__button"
+        type="button"
+        (click)="handleConfirm()"
+        [disabled]="loading"
+      >
+        {{loading ? "Loading..." : "Confirm"}}
+      </button>
+      <button
+        class="up-button up-modal__button"
+        (click)="handleCancel()"
+        [disabled]="loading"
+      >
+        {{loading ? "Loading..." : "Cancel"}}
+      </button>
+    </div>
+  </div>
+  <div class="up-modal__overlay" (click)="show = false"></div>
+</ng-container>

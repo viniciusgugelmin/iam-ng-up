@@ -64,6 +64,20 @@ export const env = {
 };
 ```
 
+Routes:
+
+```
+- /
+  - Base route to select to login or register
+- /login
+  - Route to login
+- /signup
+  - Route to register
+- /home
+  - Logged in base route
+
+```
+
 This project is using the [https://github.com/viniciusgugelmin/iam-up](https://github.com/viniciusgugelmin/iam-up)
 project back end.
 

@@ -1,0 +1,144 @@
+<form class="up-form up-form up-form--purple" (ngSubmit)="type === 'create' ? createUser() : updateUser()">
+  <h2 class="up-form__title">{{title}}</h2>
+  <div class="up-input up-input--select">
+    <div
+      [className]="'up-input__container up-input__container--purple ' + (isRoleFocused || role ? ' up-input__container--active' : '')">
+      <label
+        [className]="'up-input__label up-input__label--purple ' + (isRoleFocused || role ? ' up-input__label--active' : '')">
+        Role
+      </label>
+      <select
+        id="role"
+        class="up-input__el"
+        name="role"
+        [(ngModel)]="role"
+        required
+        (focus)="isRoleFocused = true"
+        (blur)="isRoleFocused = false"
+      >
+        <option *ngFor="let option of roles" [value]="option[0]">
+          {{option[1]}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="up-input">
+    <div
+      [className]="'up-input__container up-input__container--purple ' + (isDocumentFocused || documentTreated ? ' up-input__container--active' : '')">
+      <label
+        [className]="'up-input__label up-input__label--purple ' + (isDocumentFocused || documentTreated ? ' up-input__label--active' : '')">
+        Document
+      </label>
+      <input
+        id="document"
+        class="up-input__el"
+        type="text"
+        name="document"
+        [(ngModel)]="documentTreated"
+        required
+        (focus)="isDocumentFocused = true"
+        (blur)="isDocumentFocused = false"
+      >
+    </div>
+  </div>
+  <div class="up-input">
+    <div
+      [className]="'up-input__container up-input__container--purple ' + (isNameFocused || name ? ' up-input__container--active' : '')">
+      <label
+        [className]="'up-input__label up-input__label--purple ' + (isNameFocused || name ? ' up-input__label--active' : '')">
+        Name
+      </label>
+      <input
+        id="name"
+        class="up-input__el"
+        type="text"
+        name="name"
+        [(ngModel)]="name"
+        required
+        (focus)="isNameFocused = true"
+        (blur)="isNameFocused = false"
+      >
+    </div>
+  </div>
+  <div class="up-input">
+    <div
+      [className]="'up-input__container up-input__container--purple ' + (isEmailFocused || email ? ' up-input__container--active' : '')">
+      <label
+        [className]="'up-input__label up-input__label--purple ' + (isEmailFocused || email ? ' up-input__label--active' : '')">
+        Email
+      </label>
+      <input
+        id="email"
+        class="up-input__el"
+        type="email"
+        name="email"
+        [(ngModel)]="email"
+        required
+        (focus)="isEmailFocused = true"
+        (blur)="isEmailFocused = false"
+      >
+    </div>
+  </div>
+  <div class="up-input">
+    <div
+      [className]="'up-input__container up-input__container--purple ' + (isPasswordFocused ||password ? ' up-input__container--active' : '')">
+      <label
+        [className]="'up-input__label up-input__label--purple ' + (isPasswordFocused || password ? ' up-input__label--active' : '')">
+        Password
+      </label>
+      <input
+        id="password"
+        class="up-input__el"
+        type="password"
+        name="password"
+        [(ngModel)]="password"
+        (focus)="isPasswordFocused = true"
+        (blur)="isPasswordFocused = false"
+      >
+    </div>
+  </div>
+  <div class="up-input up-input--select">
+    <div
+      [className]="'up-input__container up-input__container--purple ' + (isGenderFocused || gender ? ' up-input__container--active' : '')">
+      <label
+        [className]="'up-input__label up-input__label--purple ' + (isGenderFocused || gender ? ' up-input__label--active' : '')">
+        Gender
+      </label>
+      <select
+        id="gender"
+        class="up-input__el"
+        name="gender"
+        [(ngModel)]="gender"
+        required
+        (focus)="isGenderFocused = true"
+        (blur)="isGenderFocused = false"
+      >
+        <option *ngFor="let option of gendersArray" [value]="option[0]">
+          {{option[1]}}
+        </option>
+      </select>
+    </div>
+  </div>
+  <div class="up-input">
+    <div
+      [className]="'up-input__container up-input__container--purple ' + (isHiredAtFocused || hiredAt ? ' up-input__container--active' : '')">
+      <label
+        [className]="'up-input__label up-input__label--purple ' + (isHiredAtFocused || hiredAt ? ' up-input__label--active' : '')">
+        Hired date
+      </label>
+      <input
+        id="hiredAt"
+        class="up-input__el"
+        type="text"
+        name="hiredAt"
+        [(ngModel)]="hiredAtTreated"
+        required
+        (focus)="isHiredAtFocused = true"
+        (blur)="isHiredAtFocused = false"
+      >
+    </div>
+  </div>
+  <button class="up-button up-button--purple" type="submit" [disabled]="disabled">
+    {{loading ? "Loading..." : "Submit"}}
+  </button>
+</form>

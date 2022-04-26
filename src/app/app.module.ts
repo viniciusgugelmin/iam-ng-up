@@ -12,6 +12,13 @@ import { FormsModule } from '@angular/forms';
 import { HomeLoggedComponent } from './pages/home-logged/home-logged.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { CommonModule } from '@angular/common';
+import { UsersListComponent } from './pages/users-list/users-list.component';
+import { TableComponent } from './components/table/table.component';
+import { BaseTemplateComponent } from './pages/base-template/base-template.component';
+import { AlertsBoxComponent } from './components/alerts-box/alerts-box.component';
+import { ConfirmBoxComponent } from './components/confirm-box/confirm-box.component';
+import { UsersFormComponent } from './pages/users-form/users-form.component';
+import { RolesListComponent } from './pages/roles-list/roles-list.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +28,13 @@ import { CommonModule } from '@angular/common';
     HomeRegisterComponent,
     HomeLoggedComponent,
     NavbarComponent,
+    UsersListComponent,
+    TableComponent,
+    BaseTemplateComponent,
+    AlertsBoxComponent,
+    ConfirmBoxComponent,
+    UsersFormComponent,
+    RolesListComponent,
   ],
   imports: [
     BrowserModule,
