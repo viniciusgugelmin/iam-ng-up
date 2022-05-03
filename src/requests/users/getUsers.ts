@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { environment } from '../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 interface IGetUsersRequest {
   token: string;
@@ -7,7 +7,7 @@ interface IGetUsersRequest {
 
 export const getUsers = async ({ token }: IGetUsersRequest) => {
   const request = await axios.get(
-    `${environment.env.API_URL || `/api`}/users`,
+    `${environment.env.API_URL || `/api`}/users/`,
     {
       headers: {
         Authorization: `Bearer ${token}`,

@@ -16,8 +16,7 @@ export class NavbarComponent implements OnInit {
 
   navbarOptions = [];
 
-  constructor(private store: Store<AppState>, private router: Router) {
-  }
+  constructor(private store: Store<AppState>, private router: Router) {}
 
   ngOnInit(): void {
     this.store.select('user').subscribe((user) => {

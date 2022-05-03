@@ -7,7 +7,7 @@ interface IGetUsersRequest {
 
 export const getRoles = async ({ token }: IGetUsersRequest) => {
   const request = await axios.get(
-    `${environment.env.API_URL || `/api`}/roles`,
+    `${environment.env.API_URL || `/api`}/roles/`,
     {
       headers: {
         Authorization: `Bearer ${token}`,
