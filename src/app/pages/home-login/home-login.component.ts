@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { AppState, login } from '../../../stores/app.state';
 import { Store } from '@ngrx/store';
 import { Router } from '@angular/router';
+import { IError } from 'src/interfaces/IError';
+import { dispatchAlert } from 'src/services/dispatchAlert';
 
 @Component({
   selector: 'app-home-login',
@@ -62,6 +64,19 @@ export class HomeLoginComponent implements OnInit {
 
       this.router.navigate([loginResponse.route]);
     } catch (error) {
+      console.log(error);
+      if (error.message) {
+        dispatchAlert({
+          message: error.message,
+          type: 'error',
+        });
+      } else {
+        dispatchAlert({
+          message: 'Server error',
+          type: 'error',
+        });
+      }
+
       this.loading = false;
     }
   }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { environment } from '../../environments/environment';
+import { environment } from 'src/environments/environment';
 
 interface IGetUserRequest {
   token: string;
