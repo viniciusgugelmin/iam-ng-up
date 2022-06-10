@@ -1,5 +1,5 @@
-import { dispatchAlert } from './dispatchAlert';
-import adminRole from '../constants/roles/adminRole';
+import { dispatchAlert } from "./dispatchAlert";
+import adminRole from "../constants/roles/adminRole";
 
 export const checkIfHasPermission = (
   user: any,
@@ -8,8 +8,8 @@ export const checkIfHasPermission = (
   dispatch: boolean = true
 ) => {
   if (
-    user.role?.name === adminRole.name ||
-    user.role?.permissions?.find(
+    user?.role?.name === adminRole.name ||
+    user?.role?.permissions?.find(
       (permission: { [x: string]: any; name: string }) =>
         permission.name &&
         permission.name === permissionName &&
@@ -21,8 +21,8 @@ export const checkIfHasPermission = (
 
   if (dispatch) {
     dispatchAlert({
-      type: 'error',
-      message: 'You dont have permission',
+      type: "error",
+      message: "You dont have permission"
     });
   }
 

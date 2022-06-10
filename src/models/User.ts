@@ -1,16 +1,16 @@
-import IUser from '../interfaces/IUser';
-import commonRole from '../constants/roles/commonRole';
-import IRole from '../interfaces/IRole';
-import genders from '../constants/users/genders';
+import IUser from "../interfaces/IUser";
+import IRole from "../interfaces/IRole";
+import genders from "../constants/users/genders";
+import commonRole from "../constants/roles/commonRole";
 
 export default class User implements IUser {
-  document = '';
-  email = '';
-  name = '';
-  password = '';
+  document = "";
+  email = "";
+  name = "";
+  password = "";
   private _active = true;
   private _statusDescription: string | null = null;
-  private _gender = '';
+  private _gender = "";
   private _hiredAt = new Date();
   role: IRole | { name: string } = { name: commonRole.name };
   private _createdAt = new Date();
@@ -35,7 +35,7 @@ export default class User implements IUser {
     let _value = value;
 
     if (!genders.includes(value)) {
-      _value = 'Prefer not to say';
+      _value = "Prefer not to say";
     }
 
     this._gender = _value;
@@ -69,19 +69,19 @@ export default class User implements IUser {
 
     return {
       _active: this._active,
-      _statusDescription: this._statusDescription,
+      _statusDescription: this._statusDescription
     };
   }
 
   public delete() {
     this._active = false;
-    this._statusDescription = 'Deleted';
+    this._statusDescription = "Deleted";
     this._deletedAt = new Date();
 
     return {
       _active: this._active,
       _statusDescription: this._statusDescription,
-      _deletedAt: this._deletedAt,
+      _deletedAt: this._deletedAt
     };
   }
 
@@ -93,7 +93,7 @@ export default class User implements IUser {
     return {
       _active: this._active,
       _statusDescription: this._statusDescription,
-      _deletedAt: this._deletedAt,
+      _deletedAt: this._deletedAt
     };
   }
 }

@@ -1,4 +1,4 @@
-import IPermission from '../interfaces/IPermission';
+import IPermission from "../interfaces/IPermission";
 
 export default class Permission implements IPermission {
   name;
@@ -27,10 +27,10 @@ export const changeRolePermission = (
         create: permission.create,
         read: permission.read,
         update: permission.update,
-        delete: permission.delete,
+        delete: permission.delete
       };
     }
 
     return p;
-  }),
+  })
 ];

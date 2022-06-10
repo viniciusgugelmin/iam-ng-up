@@ -1,3 +1,4 @@
+<script src="../../../../../iam-next-up/src/front/components/Utils/Navbar/NavbarOption/index.tsx"></script>
 <aside class="up-navbar">
   <h1 class="up-navbar__title">Go Drink</h1>
   <ng-container *ngFor="let item of navbarOptions; index as i">
@@ -11,7 +12,8 @@
     </h2>
 
     <ul
-      [className]="'up-navbar__sub-options' + (item.isActive ? ' up-navbar__sub-options--active' : ' up-navbar__sub-options--hidden')">
+      [className]="'up-navbar__sub-options' + (item.isActive ? ' up-navbar__sub-options--active' : ' up-navbar__sub-options--hidden')"
+      [style]="{ minHeight: item.isActive ? item.options.length * 40 + 'px' : 0 }">
       <li *ngFor="let option of item.options; index as iOption"
           (click)="handleSubOptionClick(i, iOption)"
           [className]="'up-navbar__sub-option' + (option.isActive ? ' up-navbar__sub-option--active' : '') + (option.blocked ? ' up-navbar__sub-option--blocked' : '')">
