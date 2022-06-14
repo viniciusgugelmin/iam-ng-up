@@ -1,13 +1,12 @@
-import { Component, OnInit } from '@angular/core';
-import { AppState, login } from '../../../stores/app.state';
-import { Store } from '@ngrx/store';
-import { Router } from '@angular/router';
-import { IError } from 'src/interfaces/IError';
-import { dispatchAlert } from 'src/services/dispatchAlert';
+import { Component, OnInit } from "@angular/core";
+import { AppState, login } from "../../../stores/app.state";
+import { Store } from "@ngrx/store";
+import { Router } from "@angular/router";
+import { dispatchAlert } from "src/services/dispatchAlert";
 
 @Component({
-  selector: 'app-home-login',
-  templateUrl: './home-login.component.html',
+  selector: "app-home-login",
+  templateUrl: "./home-login.component.html"
 })
 export class HomeLoginComponent implements OnInit {
   disabled = true;
@@ -15,8 +14,8 @@ export class HomeLoginComponent implements OnInit {
   isPasswordFocused = false;
   isEmailFocused = false;
 
-  _email = '';
-  _password = '';
+  _email = "";
+  _password = "";
 
   set email(value: string) {
     this._email = value;
@@ -36,9 +35,11 @@ export class HomeLoginComponent implements OnInit {
     return this._password;
   }
 
-  constructor(private store: Store<AppState>, private router: Router) {}
+  constructor(private store: Store<AppState>, private router: Router) {
+  }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+  }
 
   async login() {
     if ((!this.email || !this.password) && !this.loading) {
@@ -50,16 +51,16 @@ export class HomeLoginComponent implements OnInit {
     try {
       const loginResponse = await login({
         email: this.email,
-        password: this.password,
+        password: this.password
       });
 
       this.store.dispatch({
-        type: 'SET_USER',
-        payload: loginResponse.user,
+        type: "SET_USER",
+        payload: loginResponse.user
       });
       this.store.dispatch({
-        type: 'SET_TOKEN',
-        payload: loginResponse.token,
+        type: "SET_TOKEN",
+        payload: loginResponse.token
       });
 
       this.router.navigate([loginResponse.route]);
@@ -68,12 +69,12 @@ export class HomeLoginComponent implements OnInit {
       if (error.message) {
         dispatchAlert({
           message: error.message,
-          type: 'error',
+          type: "error"
         });
       } else {
         dispatchAlert({
-          message: 'Server error',
-          type: 'error',
+          message: "Server error",
+          type: "error"
         });
       }
 

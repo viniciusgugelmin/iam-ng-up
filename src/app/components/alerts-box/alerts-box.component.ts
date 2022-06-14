@@ -1,37 +1,38 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: 'app-alerts-box',
-  templateUrl: './alerts-box.component.html',
+  selector: "app-alerts-box",
+  templateUrl: "./alerts-box.component.html"
 })
 export class AlertsBoxComponent implements OnInit {
   alerts = [];
 
-  constructor() {}
+  constructor() {
+  }
 
   ngOnInit(): void {
-    window.addEventListener('up-alert', (e: any) => {
+    window.addEventListener("up-alert", (e: any) => {
       this.addAlert(e.detail);
     });
   }
 
   addAlert({
-    message,
-    type = 'common',
-    timeout = 5000,
-  }: {
+             message,
+             type = "common",
+             timeout = 5000
+           }: {
     message: string;
     type: string;
     timeout: number;
   }) {
-    if (!['success', 'error', 'common'].includes(type)) {
-      type = 'common';
+    if (!["success", "error", "common"].includes(type)) {
+      type = "common";
     }
 
     const newAlert = {
       id: Date.now(),
       type,
-      message,
+      message
     };
 
     this.alerts = [newAlert, ...this.alerts];

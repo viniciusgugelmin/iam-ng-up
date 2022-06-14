@@ -20,6 +20,9 @@ import { ConfirmBoxComponent } from "./components/confirm-box/confirm-box.compon
 import { UsersFormComponent } from "./pages/users-form/users-form.component";
 import { RolesListComponent } from "./pages/roles-list/roles-list.component";
 import { ProductsListComponent } from "./pages/products-list/products-list.component";
+import { CategoriesListComponent } from "./pages/categories-list/categories-list.component";
+import { StorageListComponent } from "./pages/storage-list/storage-list.component";
+import { EntriesListComponent } from "./pages/entries-list/entries-list.component";
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { ProductsListComponent } from "./pages/products-list/products-list.compo
     ConfirmBoxComponent,
     UsersFormComponent,
     RolesListComponent,
-    ProductsListComponent
+    ProductsListComponent,
+    CategoriesListComponent,
+    StorageListComponent,
+    EntriesListComponent
   ],
   imports: [
     BrowserModule,

@@ -1,26 +1,26 @@
 import { Component, OnInit } from "@angular/core";
+import User from "../../../models/User";
 import { Store } from "@ngrx/store";
 import { AppState } from "../../../stores/app.state";
 import { Router } from "@angular/router";
-import User from "../../../models/User";
 import { checkIfHasPermission } from "../../../services/checkIfUserHasPermission";
-import { getUsers } from "src/requests/users/getUsers";
-import IUser from "../../../interfaces/IUser";
-import { deleteUser } from "../../../requests/users/deleteUser";
-import { dispatchAlert } from "src/services/dispatchAlert";
+import { dispatchAlert } from "../../../services/dispatchAlert";
 import { IError } from "../../../interfaces/IError";
-import { dispatchConfirmBox } from "src/services/dispatchConfirmBox";
+import IProductsCategory from "../../../interfaces/IProductsCategory";
+import { dispatchConfirmBox } from "../../../services/dispatchConfirmBox";
+import { deleteProductsCategory } from "../../../requests/productsCategories/deleteProductsCategory";
+import { getProductsCategories } from "../../../requests/productsCategories/getProductsCategories";
 
 @Component({
-  selector: "app-users-list",
-  templateUrl: "./users-list.component.html"
+  selector: "app-categories-list",
+  templateUrl: "./categories-list.component.html"
 })
-export class UsersListComponent implements OnInit {
+export class CategoriesListComponent implements OnInit {
   user = {} as User;
   token = "";
 
-  users = [];
-  headers = ["Name", "Email", "Role", "Update", "Delete"];
+  categories = [];
+  headers = ["Name", "Update", "Delete"];
   loading = false;
 
   constructor(private store: Store<AppState>, private router: Router) {
@@ -35,26 +35,24 @@ export class UsersListComponent implements OnInit {
       this.token = token;
     });
 
-    if (!checkIfHasPermission(this.user, "users", "read", false)) {
+    if (!checkIfHasPermission(this.user, "product_categories", "read", false)) {
       this.router.navigate(["/home"]);
       return;
     }
 
-    this.loadUsers();
+    this.loadProductsCategories();
   }
 
-  loadUsers() {
-    getUsers({ token: this.token })
+  loadProductsCategories() {
+    getProductsCategories({ token: this.token })
       .then((data) => {
-        const mappedUsers = data.users.map((user: IUser) => [
-          user.name,
-          user.email,
-          user.role.name,
-          () => this.handleUpdateUser(user._id as string),
-          () => this.handleDeleteUser(user._id as string, user.name)
+        const mappedCateogories = data.productsCategories.map((category: IProductsCategory) => [
+          category.name,
+          () => this.handleUpdateCategory(category._id as string),
+          () => this.handleDeleteCategory(category._id as string, category.name)
         ]);
 
-        this.users = [...mappedUsers];
+        this.categories = [...mappedCateogories];
       })
       .catch((error) => {
         if (!error.response?.data) {
@@ -74,22 +72,22 @@ export class UsersListComponent implements OnInit {
       });
   }
 
-  handleUpdateUser(id: string) {
-    this.router.navigate([`/home/users/form/${id}`]);
+  handleUpdateCategory(id: string) {
+    this.router.navigate([`/home/products/categories/form/${id}`]);
   }
 
-  handleDeleteUser(id: string, name: string) {
+  handleDeleteCategory(id: string, name: string) {
     dispatchConfirmBox({
-      title: "Delete user",
+      title: "Delete products category",
       message: `Are you sure you want to delete "${name}"?`,
       onConfirm: async (available = false) => {
         if (!available) return;
 
         try {
-          await deleteUser({ id, token: this.token });
+          await deleteProductsCategory({ id, token: this.token });
 
           dispatchAlert({
-            message: `User "${name}" has been deleted`,
+            message: `Products category "${name}" has been deleted`,
             type: "success"
           });
         } catch (error) {
@@ -98,7 +96,7 @@ export class UsersListComponent implements OnInit {
             type: "error"
           });
         } finally {
-          this.loadUsers();
+          this.loadProductsCategories();
         }
       }
     });

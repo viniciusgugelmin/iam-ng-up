@@ -9,6 +9,9 @@ import { BaseTemplateComponent } from "./pages/base-template/base-template.compo
 import { UsersFormComponent } from "./pages/users-form/users-form.component";
 import { RolesListComponent } from "./pages/roles-list/roles-list.component";
 import { ProductsListComponent } from "./pages/products-list/products-list.component";
+import { CategoriesListComponent } from "./pages/categories-list/categories-list.component";
+import { StorageListComponent } from "./pages/storage-list/storage-list.component";
+import { EntriesListComponent } from "./pages/entries-list/entries-list.component";
 
 const routes: Routes = [
   {
@@ -42,7 +45,13 @@ const routes: Routes = [
           {
             path: "products",
             children: [{ path: "list", component: ProductsListComponent }]
-          }
+          },
+          {
+            path: "products/categories",
+            children: [{ path: "list", component: CategoriesListComponent }]
+          },
+          { path: "storage", children: [{ path: "list", component: StorageListComponent }] },
+          { path: "entries", children: [{ path: "list", component: EntriesListComponent }] }
         ]
       }
     ]
