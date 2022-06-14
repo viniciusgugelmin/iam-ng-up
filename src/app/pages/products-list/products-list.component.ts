@@ -50,8 +50,8 @@ export class ProductsListComponent implements OnInit {
           product.name,
           product.brand,
           product.category?.name,
-          () => this.handleUpdateUser(product._id as string),
-          () => this.handleDeleteUser(product._id as string, product.name)
+          () => this.handleUpdateProduct(product._id as string),
+          () => this.handleDeleteProduct(product._id as string, product.name)
         ]);
 
         this.products = [...mappedProducts];
@@ -74,11 +74,11 @@ export class ProductsListComponent implements OnInit {
       });
   }
 
-  handleUpdateUser(id: string) {
+  handleUpdateProduct(id: string) {
     this.router.navigate([`/home/products/form/${id}`]);
   }
 
-  handleDeleteUser(id: string, name: string) {
+  handleDeleteProduct(id: string, name: string) {
     dispatchConfirmBox({
       title: "Delete product",
       message: `Are you sure you want to delete "${name}"?`,
