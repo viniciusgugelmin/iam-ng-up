@@ -75,10 +75,46 @@ Routes:
   - Route to register
 - /home
   - Logged in base route
-
+- /home/users/list
+  - Route to list all users
+- /home/users/form
+  - Route to create a new user
+- /home/users/form/:userId
+  - Route to update a user by id
+- /home/roles/list
+  - Route to list all roles
+- /home/products/list
+  - Route to list all products
+- /home/products/form
+  - Route to create a new product
+- /home/products/form/:productId
+  - Route to update a product by id
+- /home/products/categories/list
+  - Route to list all categories
+- /home/products/categories/form
+  - Route to create a new category
+- /home/products/categories/form/:categoryId
+  - Route to update a category by id
+- /home/storage/list
+  - Route to list all storage
+- /home/entries/list
+  - Route to list all entries
+- /home/entries/form
+  - Route to create a new entry and add it to the storage
+- /home/products-for-sale/list
+  - Route to list all products for sale
+- /home/products-for-sale/form
+  - Route to create a new product for sale
+- /home/customers/list
+  - Route to list all customers
+- /home/customers/form
+  - Route to create a new customer
+- /home/customers/form/:customerId
+  - Route to update a customer by id
 ```
 
-This project is using the [https://github.com/viniciusgugelmin/iam-up](https://github.com/viniciusgugelmin/iam-up)
+This project is using
+the [https://github.com/viniciusgugelmin/iam-next-up](https://github.com/viniciusgugelmin/iam-next-up)
 project back end.
 
 ## Contributing
