@@ -1,5 +1,6 @@
 import { getUser, logout } from '../stores/app.state';
 import User from '../models/User';
+import { dispatchAlert } from '../services/dispatchAlert';
 
 const useAuthentication = async (
   user: User | null,
@@ -19,6 +20,11 @@ const useAuthentication = async (
 
       return { ...getUserResponse };
     } catch (error) {
+      dispatchAlert({
+        message: 'You are not authenticated',
+        type: 'error',
+      });
+
       if (needsPushToHome) {
         return handleLogout();
       }

@@ -28,6 +28,8 @@ export const login = async ({ email, password }: IUserLogin) => {
     token = loginResponse.token;
     localStorage.setItem('iam-token', token);
   } catch (error) {
+    localStorage.removeItem('iam-token');
+
     if (!(error as { response?: any }).response) {
       throw new AppError('Server error', 500);
     }
@@ -58,6 +60,10 @@ export const getUser = async ({ token }: IUserAuth) => {
     user = getUserResponse.user;
   } catch (error) {
     localStorage.removeItem('iam-token');
+
+    if (!(error as { response?: any }).response) {
+      throw new AppError('Server error', 500);
+    }
 
     throw new AppError(
       (error as IError).response.data.message,
