@@ -707,7 +707,6 @@ html, body {
 
 .up-product-cards {
   display: flex;
-  overflow-x: auto;
   justify-content: center;
   align-items: center;
   gap: 25px
@@ -722,11 +721,11 @@ html, body {
   width: 100%;
   padding: 25px;
   color: #fff;
-  font-size: 1.2rem
+  font-size: 1.2rem;
+  text-align: center
 }
 
 .up-product-cards .up-product-card {
-  max-width: calc(50% - 20px);
   margin-bottom: 20px
 }
 
@@ -853,7 +852,8 @@ html, body {
   display: flex;
   justify-content: center;
   align-items: center;
-  max-width: 100vw
+  max-width: 100vw;
+  overflow-x: auto
 }
 
 .up-app-page__footer {

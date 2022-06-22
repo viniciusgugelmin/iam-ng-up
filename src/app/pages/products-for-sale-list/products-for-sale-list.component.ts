@@ -44,11 +44,6 @@ export class ProductsForSaleListComponent implements OnInit {
       this.token = token;
     });
 
-    if (!checkIfHasPermission(this.user, 'products_for_sale', 'read', false)) {
-      this.router.navigate(['/home']);
-      return;
-    }
-
     this.loadProducts();
   }
 

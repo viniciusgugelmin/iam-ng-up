@@ -14,6 +14,7 @@ import { StorageListComponent } from './pages/storage-list/storage-list.componen
 import { EntriesListComponent } from './pages/entries-list/entries-list.component';
 import { ProductsForSaleListComponent } from './pages/products-for-sale-list/products-for-sale-list.component';
 import { CustomersListComponent } from './pages/customers-list/customers-list.component';
+import { SalesListComponent } from './pages/sales-list/sales-list.component';
 
 const routes: Routes = [
   {
@@ -69,6 +70,10 @@ const routes: Routes = [
           {
             path: 'customers',
             children: [{ path: 'list', component: CustomersListComponent }],
+          },
+          {
+            path: 'sales',
+            children: [{ path: 'list', component: SalesListComponent }],
           },
         ],
       },

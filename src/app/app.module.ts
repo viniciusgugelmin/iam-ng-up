@@ -25,6 +25,7 @@ import { StorageListComponent } from './pages/storage-list/storage-list.componen
 import { EntriesListComponent } from './pages/entries-list/entries-list.component';
 import { ProductsForSaleListComponent } from './pages/products-for-sale-list/products-for-sale-list.component';
 import { CustomersListComponent } from './pages/customers-list/customers-list.component';
+import { SalesListComponent } from './pages/sales-list/sales-list.component';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,7 @@ import { CustomersListComponent } from './pages/customers-list/customers-list.co
     EntriesListComponent,
     ProductsForSaleListComponent,
     CustomersListComponent,
+    SalesListComponent,
   ],
   imports: [
     BrowserModule,
