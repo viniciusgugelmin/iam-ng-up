@@ -111,6 +111,10 @@ Routes:
   - Route to create a new customer
 - /home/customers/form/:customerId
   - Route to update a customer by id
+- /home/sales/list
+  - Route to list all sales
+- /app
+  - Route to select product
 ```
 
 This project is using
