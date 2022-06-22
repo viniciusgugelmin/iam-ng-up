@@ -1,20 +1,9 @@
-import axios from "axios";
-import { environment } from "../../environments/environment";
+import axios from 'axios';
+import { environment } from '../../environments/environment';
 
-interface IGetProductsForSaleRequest {
-  token: string;
-}
-
-export const getProductsForSale = async ({
-                                           token
-                                         }: IGetProductsForSaleRequest) => {
+export const getProductsForSale = async ({}) => {
   const request = await axios.get(
-    `${environment.env.API_URL || `/api`}/products-for-sale`,
-    {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }
+    `${environment.env.API_URL || `/api`}/products-for-sale`
   );
 
   return await request.data;

@@ -1,0 +1,52 @@
+<div class="up-app-page">
+  <h1 class="up-app-page__title">Go Drink</h1>
+  <main class="up-app-page__main">
+    <section class="up-product-cards">
+      <p *ngIf="products.length === 0" class="up-product-cards__empty">
+        There are no products for sale at this moment :(
+      </p>
+      <div
+        *ngFor="let p of products"
+        (click)="handleBuyProductForSale(p)"
+        class="up-product-card"
+      >
+        <div
+          [className]="
+          'up-product-card__image ' +
+          (p.storageLiters <= 0 && 'up-product-card__image--out-of-stock')
+          ">
+          <span
+            style="box-sizing: border-box; display: block; overflow: hidden; width: initial; height: initial; background: none; opacity: 1; border: 0px; margin: 0px; padding: 0px; position: absolute; inset: 0px;">
+            <img
+              style="position: absolute; inset: 0px; box-sizing: border-box; padding: 0px; border: none; margin: auto; display: block; width: 0px; height: 0px; min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;"
+              [src]="p.product.image"
+              [alt]="p.product.name"
+            />
+          </span>
+          <div class="up-product-card__content">
+            <div class="up-product-card__title">{{p.product.name}}</div>
+            <div *ngIf="p._promo > 0 && p.storageLiters > 0" class="up-product-card__promo">
+              {{formatReal(p.pricePerLiter * (1 - p._promo / 100))}}
+            </div>
+            <div
+              [className]="'up-product-card__price ' +(p._promo && 'up-product-card__price--promo')"
+            >
+              {{formatReal(p.pricePerLiter)}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="up-app-page__footer">
+    <p>Select your drink</p>
+    <p>We have only 1 liter cups available for the time being.</p>
+    <p>
+      &copy;
+      {{"  "}}
+      {{ actualYear }}
+      {{"  "}}
+      GoDrink. All rights reserved.
+    </p>
+  </footer>
+</div>
