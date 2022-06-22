@@ -16,6 +16,11 @@ import { ProductsForSaleListComponent } from './pages/products-for-sale-list/pro
 import { CustomersListComponent } from './pages/customers-list/customers-list.component';
 import { SalesListComponent } from './pages/sales-list/sales-list.component';
 import { ApplicationPageComponent } from './pages/application-page/application-page.component';
+import { ProductsFormComponent } from './pages/products-form/products-form.component';
+import { CategoriesFormComponent } from './pages/categories-form/categories-form.component';
+import { EntriesFormComponent } from './pages/entries-form/entries-form.component';
+import { ProductsForSaleFormComponent } from './pages/products-for-sale-form/products-for-sale-form.component';
+import { CustomersFormComponent } from './pages/customers-form/customers-form.component';
 
 const routes: Routes = [
   {
@@ -52,11 +57,23 @@ const routes: Routes = [
           },
           {
             path: 'products',
-            children: [{ path: 'list', component: ProductsListComponent }],
+            children: [
+              { path: 'list', component: ProductsListComponent },
+              {
+                path: 'form',
+                component: ProductsFormComponent,
+              },
+            ],
           },
           {
             path: 'products/categories',
-            children: [{ path: 'list', component: CategoriesListComponent }],
+            children: [
+              { path: 'list', component: CategoriesListComponent },
+              {
+                path: 'form',
+                component: CategoriesFormComponent,
+              },
+            ],
           },
           {
             path: 'storage',
@@ -64,17 +81,30 @@ const routes: Routes = [
           },
           {
             path: 'entries',
-            children: [{ path: 'list', component: EntriesListComponent }],
+            children: [
+              { path: 'list', component: EntriesListComponent },
+              {
+                path: 'form',
+                component: EntriesFormComponent,
+              },
+            ],
           },
           {
             path: 'products-for-sale',
             children: [
               { path: 'list', component: ProductsForSaleListComponent },
+              {
+                path: 'form',
+                component: ProductsForSaleFormComponent,
+              },
             ],
           },
           {
             path: 'customers',
-            children: [{ path: 'list', component: CustomersListComponent }],
+            children: [
+              { path: 'list', component: CustomersListComponent },
+              { path: 'form', component: CustomersFormComponent },
+            ],
           },
           {
             path: 'sales',

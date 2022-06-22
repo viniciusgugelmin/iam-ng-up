@@ -27,6 +27,11 @@ import { ProductsForSaleListComponent } from './pages/products-for-sale-list/pro
 import { CustomersListComponent } from './pages/customers-list/customers-list.component';
 import { SalesListComponent } from './pages/sales-list/sales-list.component';
 import { ApplicationPageComponent } from './pages/application-page/application-page.component';
+import { ProductsFormComponent } from './pages/products-form/products-form.component';
+import { CategoriesFormComponent } from './pages/categories-form/categories-form.component';
+import { EntriesFormComponent } from './pages/entries-form/entries-form.component';
+import { ProductsForSaleFormComponent } from './pages/products-for-sale-form/products-for-sale-form.component';
+import { CustomersFormComponent } from './pages/customers-form/customers-form.component';
 
 @NgModule({
   declarations: [
@@ -51,6 +56,11 @@ import { ApplicationPageComponent } from './pages/application-page/application-p
     CustomersListComponent,
     SalesListComponent,
     ApplicationPageComponent,
+    ProductsFormComponent,
+    CategoriesFormComponent,
+    EntriesFormComponent,
+    ProductsForSaleFormComponent,
+    CustomersFormComponent,
   ],
   imports: [
     BrowserModule,
